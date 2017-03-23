@@ -1,0 +1,14 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5",
+    "types": ["node","jquery", "knockout"]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

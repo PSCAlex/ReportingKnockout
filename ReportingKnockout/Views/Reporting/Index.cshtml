@@ -1,0 +1,56 @@
+﻿
+<div class="container">
+
+    <div id="employeeColumns">
+
+        <h1>Reporting</h1>
+
+        <div class="well">
+
+            <h3>Employee</h3>
+
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    
+                    <div class="col-md-5">
+                        <div class="list-group" data-bind="foreach: columns">
+                            <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.addToSelectedColumns($data)}"></button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="list-group" data-bind="foreach: selectedColumns">
+                            <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.removeFromSelectedColumns($data)}"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-block btn-success">Next</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="dataCodes">
+
+    </div>
+
+    <div id="filter">
+
+    </div>
+
+    <div id="view">
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="~/js/reporting.js"></script>
+}
