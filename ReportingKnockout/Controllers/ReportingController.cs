@@ -19,5 +19,10 @@ namespace ReportingKnockout.Controllers
         {
             return Json(new string[] { "FirstName", "LastName", "Address1", "Username", "Email" });
         }
+
+        public IActionResult GetDataCodeColumns()
+        {
+            return Json(new string[] { "Code", "Description"});
+        }
     }
 }

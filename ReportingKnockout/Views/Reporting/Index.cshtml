@@ -3,41 +3,72 @@
 
     <div id="employeeColumns">
 
-        <h1>Reporting</h1>
+        <h1>Reporting <span data-bind="text: selectedIndex"></span></h1>
 
-        <div class="well">
+        <div class="col-md-1">
+            <button class="btn btn-block btn-default" data-bind="click: previous, disable: selectedIndex() <= 0">Prev</button>
+        </div>
 
-            <h3>Employee</h3>
+        <div class="col-md-10">
+            <div class="well">
 
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    
-                    <div class="col-md-5">
-                        <div class="list-group" data-bind="foreach: columns">
-                            <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.addToSelectedColumns($data)}"></button>
+                <h2 data-bind="text: title"></h2>
+
+                <div class="row" data-bind="visible: selectedIndex() < vmArray().length">
+                    <div class="col-md-10 col-md-offset-1">
+
+                        <div class="col-md-5" data-bind="visible: selectedIndex() === 0">
+                            <div class="list-group" data-bind="foreach: employeeColumnsVM().columns">
+                                <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.employeeColumnsVM().addToSelectedColumns($data)}"></button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-1">
-                        <span class="glyphicon glyphicon-arrow-right"></span>
-                    </div>
+                        <div class="col-md-5" data-bind="visible: selectedIndex() === 1">
+                            <div class="list-group" data-bind="foreach: dataCodeColumnsVM().columns">
+                                <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.dataCodeColumnsVM().addToSelectedColumns($data)}"></button>
+                            </div>
+                        </div>
 
-                    <div class="col-md-5">
-                        <div class="list-group" data-bind="foreach: selectedColumns">
-                            <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.removeFromSelectedColumns($data)}"></button>
+                        <div class="col-md-1">
+                            <h1>
+                                <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                            </h1>
+                        </div>
+
+                        <div class="col-md-5" data-bind="visible: selectedIndex() === 0">
+                            <div class="list-group" data-bind="foreach: employeeColumnsVM().selectedColumns">
+                                <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.employeeColumnsVM().removeFromSelectedColumns($data)}"></button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5" data-bind="visible: selectedIndex() === 1">
+                            <div class="list-group" data-bind="foreach: dataCodeColumnsVM().selectedColumns">
+                                <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.dataCodeColumnsVM().removeFromSelectedColumns($data)}"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1">
-                    <button class="btn btn-block btn-success">Next</button>
+
+                <div class="row" data-bind="visible: selectedIndex() >= vmArray().length">
+                    <div data-bind="foreach: {data : vmArray(), as : 'item'}">
+                        <div class="col-md-5">
+                            <div class="list-group" data-bind="foreach: {data: selectedColumns, as : 'columns'}">
+                                <button type="button" class="list-group-item" data-bind="text: columns"></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <div class="col-md-1">
+            <button class="btn btn-block btn-success" data-bind="click: next, disable: selectedIndex() >= vmArray().length">Next</button>
         </div>
 
     </div>
 
     <div id="dataCodes">
-
+        
     </div>
 
     <div id="filter">
@@ -47,6 +78,12 @@
     <div id="view">
 
     </div>
+</div>
+
+<div id="debug">
+    <hr />
+    <h2>Debug</h2>
+    <div data-bind="text: ko.toJSON($data)"></div>
 </div>
 
 
