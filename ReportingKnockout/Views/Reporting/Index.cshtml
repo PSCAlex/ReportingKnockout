@@ -18,21 +18,11 @@
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
 
-                        <!-- ko if: selectedIndex() === 0 -->
                         <div class="col-md-5">
-                            <div class="list-group" data-bind="foreach: employeeColumnsVM().columns">
-                                <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.employeeColumnsVM().addToSelectedColumns($data)}"></button>
+                            <div class="list-group" data-bind="foreach: vmArray()[selectedIndex()].columns">
+                                <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.vmArray()[$parent.selectedIndex()].addToSelectedColumns($data)}"></button>
                             </div>
                         </div>
-                        <!-- /ko -->
-
-                        <!-- ko if: selectedIndex() === 1 -->
-                        <div class="col-md-5">
-                            <div class="list-group" data-bind="foreach: dataCodeColumnsVM().columns">
-                                <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.dataCodeColumnsVM().addToSelectedColumns($data)}"></button>
-                            </div>
-                        </div>
-                        <!-- /ko -->
 
                         <div class="col-md-1">
                             <h1>
@@ -40,21 +30,12 @@
                             </h1>
                         </div>
 
-                        <!-- ko if: selectedIndex() === 0 -->
                         <div class="col-md-5">
-                            <div class="list-group" data-bind="foreach: employeeColumnsVM().selectedColumns">
-                                <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.employeeColumnsVM().removeFromSelectedColumns($data)}"></button>
+                            <div class="list-group" data-bind="foreach: vmArray()[selectedIndex()].selectedColumns">
+                                <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.vmArray()[$parent.selectedIndex()].removeFromSelectedColumns($data)}"></button>
                             </div>
                         </div>
-                        <!-- /ko -->
 
-                        <!-- ko if: selectedIndex() === 1 -->
-                        <div class="col-md-5" data-bind="visible: selectedIndex() === 1">
-                            <div class="list-group" data-bind="foreach: dataCodeColumnsVM().selectedColumns">
-                                <button type="button" class="list-group-item" data-bind="text: $data, click: function(){$parent.dataCodeColumnsVM().removeFromSelectedColumns($data)}"></button>
-                            </div>
-                        </div>
-                        <!-- /ko -->
                     </div>
                 </div>
                 <!-- /ko -->

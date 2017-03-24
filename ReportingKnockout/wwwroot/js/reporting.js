@@ -16285,9 +16285,7 @@ var ReportingController = (function () {
             }
         };
         this.selectedIndex = ko.observable(0);
-        this.employeeColumnsVM = ko.observable(new VMs.EmployeeColumnsVM());
-        this.dataCodeColumnsVM = ko.observable(new VMs.DataCodeColumnsVM());
-        this.vmArray = ko.observableArray([this.employeeColumnsVM(), this.dataCodeColumnsVM()]);
+        this.vmArray = ko.observableArray([new VMs.EmployeeColumnsVM(), new VMs.DataCodeColumnsVM()]);
         this.title = ko.observable(this.vmArray()[0].name);
     }
     return ReportingController;
