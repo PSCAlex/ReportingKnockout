@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\ts\ViewModels.ts" />
     <Content Include="wwwroot\ts\reporting.ts" />
   </ItemGroup>
 

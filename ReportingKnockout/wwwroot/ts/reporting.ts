@@ -1,5 +1,6 @@
 ﻿import * as ko from "knockout";
 import * as $ from "jquery";
+import * as VMs from "./ViewModels";
 
 ($(function () {
     let controller = new ReportingController();
@@ -11,12 +12,13 @@ export class ReportingController {
     dataCodeColumnsVM;
     vmArray;
     selectedIndex;
-    title
+    title;
+    jsonToSubmit;
 
     constructor() {
         this.selectedIndex = ko.observable(0);
-        this.employeeColumnsVM = ko.observable(new EmployeeColumnsVM());
-        this.dataCodeColumnsVM = ko.observable(new DataCodeColumnsVM());
+        this.employeeColumnsVM = ko.observable(new VMs.EmployeeColumnsVM());
+        this.dataCodeColumnsVM = ko.observable(new VMs.DataCodeColumnsVM());
 
         this.vmArray = ko.observableArray([this.employeeColumnsVM(), this.dataCodeColumnsVM()])
 
@@ -39,79 +41,6 @@ export class ReportingController {
         }
         else {
             this.title("Review");
-        }
-    }
-}
-
-export class DataCodeColumnsVM {
-    name;
-    columns;
-    selectedColumns;
-
-    constructor() {
-        this.name = "Data Codes";
-        this.columns = ko.observableArray([]);
-        this.selectedColumns = ko.observableArray([]);
-        this.populateColumn();
-    }
-
-    populateColumn = () => {
-        var self = this;
-        $.getJSON("/reporting/getDataCodeColumns", function (data) {
-            for (let item of data) {
-                self.columns.push(item);
-            }
-            self.columns.sort();
-        });
-
-    }
-
-    removeFromSelectedColumns = (item) => {
-        this.selectedColumns.remove(item);
-        this.selectedColumns.sort();
-    }
-
-    addToSelectedColumns = (item) => {
-        if (this.selectedColumns.indexOf(item) < 0) {
-            this.selectedColumns.push(item);
-            this.selectedColumns.sort();
-        }
-    }
-
-}
-
-export class EmployeeColumnsVM {
-    name;
-    columns;
-    selectedColumns;
-
-    constructor() {
-        this.name = "Employee";
-        this.columns = ko.observableArray([]);
-        this.selectedColumns = ko.observableArray([]);
-        this.populateColumn();
-    }
-
-    populateColumn = () => {
-        var self = this;
-        $.getJSON("/reporting/getEmployeeColumns", function (data) {
-            for (let item of data) {
-                self.columns.push(item);
-            }
-            self.columns.sort();
-        });
-        
-    }
-
-    removeFromSelectedColumns = (item) => {
-        this.selectedColumns.remove(item);
-        this.selectedColumns.sort();
-    }
-
-    addToSelectedColumns = (item) => {
-        if (this.selectedColumns.indexOf(item) < 0) {
-            this.selectedColumns.push(item);
-            this.selectedColumns.sort();
         }
     }
 }
