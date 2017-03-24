@@ -4,6 +4,10 @@ import * as VMs from "./ViewModels";
 
 ($(function () {
     let controller = new ReportingController();
+    let employeeColumnsVM = new VMs.EmployeeColumnsVM();
+    let dataCodesVM = new VMs.DataCodeColumnsVM();
+    controller.addViewModel(employeeColumnsVM, dataCodesVM);
+    controller.init();
     ko.applyBindings(controller);
 }));
 
@@ -15,8 +19,12 @@ export class ReportingController {
 
     constructor() {
         this.selectedIndex = ko.observable(0);
-        this.vmArray = ko.observableArray([new VMs.EmployeeColumnsVM(), new VMs.DataCodeColumnsVM()])
-        this.title = ko.observable(this.vmArray()[0].name);
+        this.vmArray = ko.observableArray([])
+        this.title = ko.observable("");
+    }
+
+    init = () => {
+        this.setTitle();
     }
 
     next = () => {
@@ -27,6 +35,12 @@ export class ReportingController {
     previous = () => {
         this.selectedIndex(this.selectedIndex() - 1);
         this.setTitle();
+    }
+
+    addViewModel = (...vm) => {
+        for (let item of vm) {
+            this.vmArray.push(item);
+        }
     }
 
     private setTitle = () => {
