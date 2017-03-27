@@ -17,12 +17,17 @@ namespace ReportingKnockout.Controllers
 
         public IActionResult GetEmployeeColumns()
         {
-            return Json(new string[] { "FirstName", "LastName", "Address1", "Username", "Email" });
+            return Json(new string[] { "FirstName", "LastName", "Address1", "Username", "Email", "Telephone",  });
         }
 
         public IActionResult GetDataCodeColumns()
         {
-            return Json(new string[] { "Code", "Description"});
+            return Json(new string[] { "Code", "Description", "Payment or Deduction"});
+        }
+
+        public IActionResult GetAbsenseColumns()
+        {
+            return Json(new string[] { "Duration", "Cost" });
         }
 
         public IActionResult Submit(string columns)
