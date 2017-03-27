@@ -24,5 +24,10 @@ namespace ReportingKnockout.Controllers
         {
             return Json(new string[] { "Code", "Description"});
         }
+
+        public IActionResult Submit(string columns)
+        {
+            return Json(columns);
+        }
     }
 }

@@ -34,6 +34,18 @@ var ReportingController = (function () {
                 _this.vmArray.push(item);
             }
         };
+        this.submit = function () {
+            var data = {};
+            for (var _i = 0, _a = _this.vmArray(); _i < _a.length; _i++) {
+                var item = _a[_i];
+                var name_1 = item.name;
+                var arr = item.selectedColumns();
+                data[name_1] = arr;
+            }
+            $.post("/reporting/submit", { columns: JSON.stringify(data) }, function (res) {
+                alert(res);
+            });
+        };
         this.setTitle = function () {
             if (_this.selectedIndex() >= 0 && _this.selectedIndex() < _this.vmArray().length) {
                 _this.title(_this.vmArray()[_this.selectedIndex()].name);

@@ -43,6 +43,19 @@ export class ReportingController {
         }
     }
 
+    submit = () => {
+        let data = {};
+        for (let item of this.vmArray()) {
+            let name = item.name;
+            let arr = item.selectedColumns();
+            data[name] = arr;
+        }
+
+        $.post("/reporting/submit", { columns: JSON.stringify(data) }, function (res) {
+            alert(res);
+        });
+    }
+
     private setTitle = () => {
         if (this.selectedIndex() >= 0 && this.selectedIndex() < this.vmArray().length) {
             this.title(this.vmArray()[this.selectedIndex()].name);
