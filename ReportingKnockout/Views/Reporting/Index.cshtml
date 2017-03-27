@@ -42,14 +42,12 @@
 
                 <!-- ko if: selectedIndex() >= vmArray().length -->
                 <div class="row">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div data-bind="foreach: {data : vmArray(), as : 'item'}">
-                                <div class="col-md-5">
-                                    <h4 data-bind="text: item.name"></h4>
-                                    <div class="list-group" data-bind="foreach: {data: selectedColumns, as : 'columns'}">
-                                        <button type="button" class="list-group-item" data-bind="text: columns"></button>
-                                    </div>
+                    <div class="col-md-12">
+                        <div data-bind="foreach: {data : vmArray(), as : 'item'}">
+                            <div class="col-md-5">
+                                <h4 data-bind="text: item.name"></h4>
+                                <div class="list-group" data-bind="foreach: {data: selectedColumns, as : 'columns'}">
+                                    <button type="button" class="list-group-item" data-bind="text: columns"></button>
                                 </div>
                             </div>
                         </div>

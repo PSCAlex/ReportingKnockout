@@ -48,7 +48,7 @@ export class ReportingController {
         let data = {};
         for (let item of this.vmArray()) {
             let name = item.modelName;
-            let arr = item.selectedColumns();
+            let arr = item.selectedColumns().map(a => this.toPascal(a));
             data[name] = arr;
         }
 
@@ -64,5 +64,10 @@ export class ReportingController {
         else {
             this.title("Review");
         }
+    }
+
+    private toPascal = (str: string) => {
+        return str.replace(/(\w)(\w*)/g,
+            function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); }).replace(/\s+/g, '');
     }
 }

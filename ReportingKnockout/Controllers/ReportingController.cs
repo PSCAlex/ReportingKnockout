@@ -17,7 +17,7 @@ namespace ReportingKnockout.Controllers
 
         public IActionResult GetEmployeeColumns()
         {
-            return Json(new string[] { "FirstName", "LastName", "Address1", "Username", "Email", "Telephone",  });
+            return Json(new string[] { "First Name", "Last Name", "Address1", "Username", "Email", "Telephone",  });
         }
 
         public IActionResult GetDataCodeColumns()

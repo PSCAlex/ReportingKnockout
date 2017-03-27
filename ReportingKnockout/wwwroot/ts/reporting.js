@@ -40,7 +40,7 @@ var ReportingController = (function () {
             for (var _i = 0, _a = _this.vmArray(); _i < _a.length; _i++) {
                 var item = _a[_i];
                 var name_1 = item.modelName;
-                var arr = item.selectedColumns();
+                var arr = item.selectedColumns().map(function (a) { return _this.toPascal(a); });
                 data[name_1] = arr;
             }
             $.post("/reporting/submit", { columns: JSON.stringify(data) }, function (res) {
@@ -54,6 +54,9 @@ var ReportingController = (function () {
             else {
                 _this.title("Review");
             }
+        };
+        this.toPascal = function (str) {
+            return str.replace(/(\w)(\w*)/g, function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); }).replace(/\s+/g, '');
         };
         this.selectedIndex = ko.observable(0);
         this.vmArray = ko.observableArray([]);
