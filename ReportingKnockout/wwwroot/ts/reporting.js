@@ -4,8 +4,8 @@ var $ = require("jquery");
 var VMs = require("./ViewModels");
 ($(function () {
     var controller = new ReportingController();
-    var employeeColumnsVM = new VMs.EmployeeColumnsVM();
-    var dataCodesVM = new VMs.DataCodeColumnsVM();
+    var employeeColumnsVM = new VMs.ReportingBaseVM("Employee", "/reporting/getEmployeeColumns");
+    var dataCodesVM = new VMs.ReportingBaseVM("Data Codes", "/reporting/getDataCodeColumns");
     controller.addViewModel(employeeColumnsVM, dataCodesVM);
     controller.init();
     ko.applyBindings(controller);
@@ -38,7 +38,7 @@ var ReportingController = (function () {
             var data = {};
             for (var _i = 0, _a = _this.vmArray(); _i < _a.length; _i++) {
                 var item = _a[_i];
-                var name_1 = item.name;
+                var name_1 = item.modelName;
                 var arr = item.selectedColumns();
                 data[name_1] = arr;
             }

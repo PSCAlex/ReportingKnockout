@@ -4,8 +4,8 @@ import * as VMs from "./ViewModels";
 
 ($(function () {
     let controller = new ReportingController();
-    let employeeColumnsVM = new VMs.EmployeeColumnsVM();
-    let dataCodesVM = new VMs.DataCodeColumnsVM();
+    let employeeColumnsVM = new VMs.ReportingBaseVM("Employee", "/reporting/getEmployeeColumns");
+    let dataCodesVM = new VMs.ReportingBaseVM("Data Codes", "/reporting/getDataCodeColumns");
     controller.addViewModel(employeeColumnsVM, dataCodesVM);
     controller.init();
     ko.applyBindings(controller);
@@ -46,7 +46,7 @@ export class ReportingController {
     submit = () => {
         let data = {};
         for (let item of this.vmArray()) {
-            let name = item.name;
+            let name = item.modelName;
             let arr = item.selectedColumns();
             data[name] = arr;
         }
