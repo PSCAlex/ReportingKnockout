@@ -2,25 +2,23 @@
   "version": "1.0.0",
   "name": "asp.net",
   "private": true,
+  "scripts": {},
   "devDependencies": {
     "@types/jquery": "^2.0.41",
     "@types/knockout": "^3.4.40",
     "@types/node": "^7.0.10",
-    "gulp": "3.9.1",
-    "gulp-browserify": "^0.5.1",
-    "gulp-concat": "2.6.1",
-    "gulp-cssmin": "0.1.7",
-    "gulp-uglify": "2.0.1",
-    "gulp-watch": "^4.3.11",
-    "rimraf": "2.6.1"
+    "css-loader": "0.28.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.10.1",
+    "style-loader": "^0.16.1",
+    "ts-loader": "2.0.3",
+    "url-loader": "^0.5.8",
+    "webpack": "2.3.2"
   },
   "dependencies": {
+    "bootstrap": "3.3.7",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "knockout": "^3.4.2"
-  },
-  "-vs-binding": {
-    "BeforeBuild": [
-      "install"
-    ]
   }
 }

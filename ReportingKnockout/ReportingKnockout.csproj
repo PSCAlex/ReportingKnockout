@@ -5,13 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Client\ts\Reporting.js" />
+    <Content Include="Client\ts\Reporting.js.map" />
+    <Content Include="Client\ts\Reporting.ts" />
+    <Content Include="Client\ts\ViewModels.js" />
+    <Content Include="Client\ts\ViewModels.js.map" />
+    <Content Include="Client\ts\ViewModels.ts" />
     <Content Include="wwwroot\ts\ViewModels.ts" />
-    <Content Include="wwwroot\ts\reporting.ts" />
+    <Content Include="wwwroot\ts\Reporting.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Client\js\" />
     <Folder Include="Models\" />
-    <Folder Include="wwwroot\js\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />

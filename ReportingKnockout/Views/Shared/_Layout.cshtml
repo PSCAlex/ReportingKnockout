@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width" />
     <title>Reporting</title>
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css"/>
-
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/lib/knockout/dist/knockout.js"></script>
-
+    <link rel="stylesheet" href="~/dist/styles.css"/>
 </head>
 <body>
     <div>
         @RenderBody()
     </div>
+    <script src="~/dist/manifest.js"></script>
+    <script src="~/dist/vendor.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
