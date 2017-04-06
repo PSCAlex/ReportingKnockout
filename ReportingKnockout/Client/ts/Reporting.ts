@@ -1,6 +1,7 @@
 ﻿import * as $ from "jquery";
 import * as ko from "knockout";
 import * as VMs from "./ViewModels";
+require('../css/site.css');
 
 ($(function () {
     let controller = new ReportingController();

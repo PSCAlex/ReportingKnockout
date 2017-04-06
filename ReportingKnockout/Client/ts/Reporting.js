@@ -2,6 +2,7 @@
 var $ = require("jquery");
 var ko = require("knockout");
 var VMs = require("./ViewModels");
+require('../css/site.css');
 ($(function () {
     var controller = new ReportingController();
     var employeeColumnsVM = new VMs.ReportingBaseVM("Employee", "/reporting/getEmployeeColumns");

@@ -1,60 +1,56 @@
-﻿/// <binding BeforeBuild='Run - Development' ProjectOpened='Watch - Development' />
+﻿///// <binding BeforeBuild='Run - Development' ProjectOpened='Watch - Development' />
+//var webpack = require("webpack");
 
-var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+//function buildConfig(env) {
+//    return require('./config/' + env + '.js')(env)
+//}
 
-module.exports = function () {
-    return {
-        entry: {
-            'vendor': "./Client/ts/Vendor.ts",
-            'reporting': "./Client/ts/Reporting.ts"
-        },
+//module.exports = buildConfig(process.env.NODE_ENV);
+
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
+const bundleOutputDir = './wwwroot/dist';
+
+module.exports = (env) => {
+    const isDevBuild = !(env && env.prod);
+    return [{
+        //displays some info at top of build
+        stats: { modules: false },
+         // Here the application starts executing and webpack starts bundling
+        entry: { 'reporting': './Client/ts/Reporting.ts' },
+        // options for resolving module requests
+        resolve: { extensions: ['.js', '.ts'] },
         output: {
-            path: path.resolve(__dirname, "./wwwroot/dist"),
-            filename: "[name].js"
+            //the target directory for all output files
+            path: path.join(__dirname, bundleOutputDir),
+            // the filename template for entry chunks
+            filename: '[name].js',
+            // the url to the output directory resolved relative to the HTML page
+            publicPath: '/dist/'
         },
-        plugins: [
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'vendor',
-                minChunks: function (module) {
-                    return module.context && module.context.indexOf('node_modules') !== -1;
-                }
-            }),
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'manifest'
-            }),
-            new ExtractTextPlugin('styles.css'),
-            new webpack.ProvidePlugin({
-                $: "jquery",
-                jQuery: "jquery"
-            })
-        ],
         module: {
+            // rules for modules (configure loaders, parser options, etc.)
             rules: [
-                {
-                    test: /\.css$/,
-                    use: ExtractTextPlugin.extract({
-                        use: 'css-loader'
-                    })
-                },
-                {
-                    test: /\.ts$/,
-                    use: "ts-loader"
-                },
-                {
-                    test: /\.(jpg|png|gif)$/,
-                    use: 'file-loader'
-                }, {
-                    test: /\.(woff|woff2|eot|ttf|svg)$/,
-                    use: {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 100000
-                        }
-                    }
-                }
+                { test: /\.ts$/, use: 'awesome-typescript-loader' },
+                { test: /\.html$/, use: 'raw-loader' },
+                { test: /\.css$/, use: ExtractTextPlugin.extract({ use: 'css-loader' }) },
+                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
             ]
-        }
-    }
+        },
+        // list of additional plugins
+        plugins: [
+            new ExtractTextPlugin('site.css')
+        ].concat(isDevBuild ? [
+            // Plugins that apply in development builds only
+            new webpack.SourceMapDevToolPlugin({
+                filename: '[file].map', // Remove this line if you prefer inline source maps
+                moduleFilenameTemplate: path.relative(bundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
+            })
+        ] : [
+                // Plugins that apply in production builds only
+                new webpack.optimize.UglifyJsPlugin()
+            ])
+    }];
 };

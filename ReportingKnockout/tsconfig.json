@@ -5,8 +5,7 @@
     "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": true,
-    "target": "es5",
-    "types": ["node","jquery", "knockout"]
+    "target": "es5"
   },
   "exclude": [
     "node_modules",
