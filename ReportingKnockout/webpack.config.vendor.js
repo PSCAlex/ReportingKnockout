@@ -27,14 +27,17 @@ module.exports = (env) => {
             ]
         },
         entry: {
-            vendor: ["jquery",
-                    "jquery-ui",
-                    "knockout",
-                    "bootstrap",
-                    "lodash",
-                    'event-source-polyfill',
-                    'history',
-                    "bootstrap/dist/css/bootstrap.css"
+            vendor: [
+                "jquery",
+                "jquery-ui",
+                "knockout",
+                "bootstrap",
+                "lodash",
+                'event-source-polyfill',
+                'history',
+                'react',
+                'react-dom',
+                'bootstrap/dist/css/bootstrap.css'
             ],
         },
         output: {

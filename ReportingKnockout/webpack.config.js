@@ -1,13 +1,4 @@
-﻿///// <binding BeforeBuild='Run - Development' ProjectOpened='Watch - Development' />
-//var webpack = require("webpack");
-
-//function buildConfig(env) {
-//    return require('./config/' + env + '.js')(env)
-//}
-
-//module.exports = buildConfig(process.env.NODE_ENV);
-
-const path = require('path');
+﻿const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
@@ -21,10 +12,10 @@ module.exports = (env) => {
          // Here the application starts executing and webpack starts bundling
         entry: {
             'reporting': './Client/ts/Reporting.ts',
-            'reactTest': './Client/js/ReactTest.js'
+            'reactTest': './Client/js/ReactTest.jsx'
         },
         // options for resolving module requests
-        resolve: { extensions: ['.js', '.ts'] },
+        resolve: { extensions: ['.js', '.ts', '.jsx'] },
         output: {
             //the target directory for all output files
             path: path.join(__dirname, bundleOutputDir),
@@ -40,7 +31,7 @@ module.exports = (env) => {
                 { test: /\.html$/, use: 'raw-loader' },
                 { test: /\.css$/, use: ExtractTextPlugin.extract({ use: 'css-loader' }) },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
-                { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+                { test: /\.jsx$/, exclude: /node_modules/, loader: "babel-loader" }
             ]
         },
         // list of additional plugins
