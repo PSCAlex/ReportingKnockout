@@ -41,7 +41,12 @@ module.exports = (env) => {
         },
         // list of additional plugins
         plugins: [
-            new ExtractTextPlugin('site.css')
+            new ExtractTextPlugin('site.css'),
+            new CheckerPlugin(),
+            new webpack.DllReferencePlugin({
+                context: __dirname,
+                manifest: require('./wwwroot/dist/vendor-manifest.json')
+            })
         ].concat(isDevBuild ? [
             // Plugins that apply in development builds only
             new webpack.SourceMapDevToolPlugin({

@@ -1,7 +1,10 @@
 "use strict";
-var $ = require("jquery");
+//import * as $ from "jquery";
+//needed for jquery to be available on page
+var $ = require('expose-loader?$!expose-loader?jQuery!jquery');
 var ko = require("knockout");
 var VMs = require("./ViewModels");
+//page specific css here 
 require('../css/site.css');
 ($(function () {
     var controller = new ReportingController();

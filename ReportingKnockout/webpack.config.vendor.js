@@ -27,26 +27,29 @@ module.exports = (env) => {
             ]
         },
         entry: {
-            'vendor': './Client/ts/Vendor.ts',
+            vendor: ["jquery",
+                    "jquery-ui",
+                    "knockout",
+                    "bootstrap",
+                    "lodash",
+                    'event-source-polyfill',
+                    'history',
+                    "bootstrap/dist/css/bootstrap.css"
+            ],
         },
         output: {
             path: path.join(__dirname, 'wwwroot', 'dist'),
             publicPath: '/dist/',
-            filename: '[name].js'
+            filename: '[name].js',
+            library: '[name]_[hash]',
         },
         plugins: [
             extractCSS,
             new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
             //chunk vendor code into own bundle
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'vendor',
-                minChunks: function (module) {
-                    return module.context && module.context.indexOf('node_modules') !== -1;
-                }
-            }),
-            //chunk webpack runtime code co vendor code can be cached
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'manifest'
+            new webpack.DllPlugin({
+                path: path.join(__dirname, 'wwwroot', 'dist', '[name]-manifest.json'),
+                name: '[name]_[hash]'
             })
         ].concat(isDevBuild ? [] : [
             new webpack.optimize.UglifyJsPlugin()

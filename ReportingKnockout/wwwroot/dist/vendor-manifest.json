@@ -1,0 +1,157 @@
+{
+  "name": "vendor_c1309751ff500057f4f4",
+  "content": {
+    "./node_modules/jquery/dist/jquery.js": {
+      "id": 32,
+      "meta": {}
+    },
+    "./node_modules/history/PathUtils.js": {
+      "id": 1,
+      "meta": {}
+    },
+    "./node_modules/history/LocationUtils.js": {
+      "id": 2,
+      "meta": {}
+    },
+    "./node_modules/warning/browser.js": {
+      "id": 3,
+      "meta": {}
+    },
+    "./node_modules/webpack/buildin/global.js": {
+      "id": 4,
+      "meta": {}
+    },
+    "./node_modules/history/createTransitionManager.js": {
+      "id": 5,
+      "meta": {}
+    },
+    "./node_modules/history/DOMUtils.js": {
+      "id": 6,
+      "meta": {}
+    },
+    "./node_modules/invariant/browser.js": {
+      "id": 7,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/dist/js/npm.js": {
+      "id": 8,
+      "meta": {}
+    },
+    "./node_modules/event-source-polyfill/eventsource.js": {
+      "id": 9,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/dist/css/bootstrap.css": {
+      "id": 10,
+      "meta": {}
+    },
+    "./node_modules/history/index.js": {
+      "id": 11,
+      "meta": {}
+    },
+    "./node_modules/jquery-ui/ui/widget.js": {
+      "id": 12,
+      "meta": {}
+    },
+    "./node_modules/knockout/build/output/knockout-latest.debug.js": {
+      "id": 13,
+      "meta": {}
+    },
+    "./node_modules/lodash/dist/lodash.js": {
+      "id": 14,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/affix.js": {
+      "id": 15,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/alert.js": {
+      "id": 16,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/button.js": {
+      "id": 17,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/carousel.js": {
+      "id": 18,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/collapse.js": {
+      "id": 19,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/dropdown.js": {
+      "id": 20,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/modal.js": {
+      "id": 21,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/popover.js": {
+      "id": 22,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/scrollspy.js": {
+      "id": 23,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/tab.js": {
+      "id": 24,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/tooltip.js": {
+      "id": 25,
+      "meta": {}
+    },
+    "./node_modules/bootstrap/js/transition.js": {
+      "id": 26,
+      "meta": {}
+    },
+    "./node_modules/expose-loader/index.js?$!./node_modules/jquery/dist/jquery.js": {
+      "id": 27,
+      "meta": {}
+    },
+    "./node_modules/history/createBrowserHistory.js": {
+      "id": 28,
+      "meta": {}
+    },
+    "./node_modules/history/createHashHistory.js": {
+      "id": 29,
+      "meta": {}
+    },
+    "./node_modules/history/createMemoryHistory.js": {
+      "id": 30,
+      "meta": {}
+    },
+    "./node_modules/jquery-ui/ui/version.js": {
+      "id": 31,
+      "meta": {}
+    },
+    "./node_modules/node-libs-browser/node_modules/process/browser.js": {
+      "id": 33,
+      "meta": {}
+    },
+    "./node_modules/node-libs-browser/node_modules/timers-browserify/main.js": {
+      "id": 34,
+      "meta": {}
+    },
+    "./node_modules/resolve-pathname/index.js": {
+      "id": 35,
+      "meta": {}
+    },
+    "./node_modules/setimmediate/setImmediate.js": {
+      "id": 36,
+      "meta": {}
+    },
+    "./node_modules/value-equal/index.js": {
+      "id": 37,
+      "meta": {}
+    },
+    "./node_modules/webpack/buildin/module.js": {
+      "id": 38,
+      "meta": {}
+    }
+  }
+}

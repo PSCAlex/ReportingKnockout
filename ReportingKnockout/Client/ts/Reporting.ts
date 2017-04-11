@@ -1,6 +1,10 @@
-﻿import * as $ from "jquery";
+﻿//import * as $ from "jquery";
+//needed for jquery to be available on page
+const $ = require('expose-loader?$!expose-loader?jQuery!jquery');
 import * as ko from "knockout";
 import * as VMs from "./ViewModels";
+
+//page specific css here 
 require('../css/site.css');
 
 ($(function () {
