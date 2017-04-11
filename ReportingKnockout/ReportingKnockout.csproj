@@ -12,16 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Client\ts\Reporting.js" />
-    <Content Include="Client\ts\Reporting.js.map" />
     <Content Include="Client\ts\Reporting.ts" />
-    <Content Include="Client\ts\ViewModels.js" />
-    <Content Include="Client\ts\ViewModels.js.map" />
     <Content Include="Client\ts\ViewModels.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Client\js\" />
     <Folder Include="Models\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>

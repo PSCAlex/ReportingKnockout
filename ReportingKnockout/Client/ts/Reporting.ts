@@ -2,16 +2,16 @@
 //needed for jquery to be available on page
 const $ = require('expose-loader?$!expose-loader?jQuery!jquery');
 import * as ko from "knockout";
-import * as VMs from "./ViewModels";
+import { ReportingBaseVM } from "./ViewModels";
 
 //page specific css here 
 require('../css/site.css');
 
 ($(function () {
     let controller = new ReportingController();
-    let employeeColumnsVM = new VMs.ReportingBaseVM("Employee", "/reporting/getEmployeeColumns");
-    let dataCodesVM = new VMs.ReportingBaseVM("Data Codes", "/reporting/getDataCodeColumns");
-    let absenseVM = new VMs.ReportingBaseVM("Absense", "/reporting/getAbsenseColumns");
+    let employeeColumnsVM = new ReportingBaseVM("Employee", "/reporting/getEmployeeColumns");
+    let dataCodesVM = new ReportingBaseVM("Data Codes", "/reporting/getDataCodeColumns");
+    let absenseVM = new ReportingBaseVM("Absense", "/reporting/getAbsenseColumns");
     controller.addViewModel(employeeColumnsVM, dataCodesVM, absenseVM);
     controller.init();
     ko.applyBindings(controller);

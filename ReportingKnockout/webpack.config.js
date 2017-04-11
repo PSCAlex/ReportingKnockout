@@ -19,7 +19,10 @@ module.exports = (env) => {
         //displays some info at top of build
         stats: { modules: false },
          // Here the application starts executing and webpack starts bundling
-        entry: { 'reporting': './Client/ts/Reporting.ts' },
+        entry: {
+            'reporting': './Client/ts/Reporting.ts',
+            'reactTest': './Client/js/ReactTest.js'
+        },
         // options for resolving module requests
         resolve: { extensions: ['.js', '.ts'] },
         output: {
@@ -36,7 +39,8 @@ module.exports = (env) => {
                 { test: /\.ts$/, use: 'awesome-typescript-loader' },
                 { test: /\.html$/, use: 'raw-loader' },
                 { test: /\.css$/, use: ExtractTextPlugin.extract({ use: 'css-loader' }) },
-                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
+                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' },
+                { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
             ]
         },
         // list of additional plugins
