@@ -3,6 +3,7 @@
 const $ = require('expose-loader?$!expose-loader?jQuery!jquery');
 import * as ko from "knockout";
 import { ReportingBaseVM } from "./ViewModels";
+import {toPascal} from "./Utils";
 
 //page specific css here 
 require('../css/site.css');
@@ -53,7 +54,7 @@ export class ReportingController {
         let data = {};
         for (let item of this.vmArray()) {
             let name = item.modelName;
-            let arr = item.selectedColumns().map(a => this.toPascal(a));
+            let arr = item.selectedColumns().map(a => toPascal(a));
             data[name] = arr;
         }
 
@@ -69,14 +70,5 @@ export class ReportingController {
         else {
             this.title("Review");
         }
-    }
-
-    private testFunc = () => {
-        return "This is another testtttttt";
-    }
-
-    private toPascal = (str: string) => {
-        return str.replace(/(\w)(\w*)/g,
-            function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); }).replace(/\s+/g, '');
     }
 }

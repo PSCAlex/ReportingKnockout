@@ -1,5 +1,6 @@
 ﻿import * as $ from "jquery";
 import * as ko from "knockout";
+import {toPascal} from "./Utils";
 
 export class ReportingBaseVM {
     name: string;
@@ -12,7 +13,7 @@ export class ReportingBaseVM {
         this.columns = ko.observableArray([]);
         this.selectedColumns = ko.observableArray([]);
         this.populateColumn(url);
-        this.modelName = this.toPascal(this.name);
+        this.modelName = toPascal(this.name);
     }
 
     populateColumn = (url: string) => {
@@ -23,7 +24,6 @@ export class ReportingBaseVM {
             }
             self.columns.sort();
         });
-
     }
 
     removeFromSelectedColumns = (item) => {
@@ -36,10 +36,5 @@ export class ReportingBaseVM {
             this.selectedColumns.push(item);
             this.selectedColumns.sort();
         }
-    }
-
-    private toPascal = (str: string) => {
-        return str.replace(/(\w)(\w*)/g,
-            function (g0, g1, g2) { return g1.toUpperCase() + g2.toLowerCase(); }).replace(/\s+/g,'');
     }
 }
